@@ -30,6 +30,7 @@ const server = http.createServer(function (req, res) {
     return res.end('bad request');
   }
   if (urlPath === '/' || urlPath === '') urlPath = '/index.html';
+  if (urlPath.endsWith('/')) urlPath += 'index.html';
 
   const filePath = path.join(ROOT, path.normalize(urlPath).replace(/^([/\\])+/, ''));
   if (!filePath.startsWith(ROOT)) {
